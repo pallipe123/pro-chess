@@ -1,6 +1,29 @@
 # Pro Chess
 
+![Repo Size](https://img.shields.io/github/repo-size/pallipe123/pro-chess)
+![Top Language](https://img.shields.io/github/languages/top/pallipe123/pro-chess)
+![Last Commit](https://img.shields.io/github/last-commit/pallipe123/pro-chess)
+![License](https://img.shields.io/badge/license-ISC-blue)
+
 A modern two-player chess web application with Three Check rule support, local gameplay, timers, move history, and captured pieces tracking.
+
+## Quick Start
+
+Install dependencies:
+
+```powershell
+npm.cmd install
+```
+
+Run in browser:
+
+```powershell
+npx.cmd --yes http-server . -p 5173
+```
+
+Open:
+
+- http://127.0.0.1:5173
 
 ## Features
 
@@ -10,6 +33,12 @@ A modern two-player chess web application with Three Check rule support, local g
 - Captured pieces tracking
 - Undo and restart controls
 - Responsive board layout with rank/file coordinates
+
+## Demo GIF
+
+Add a GIF file at `assets/screenshots/demo.gif` to show a quick game flow in the README.
+
+![Pro Chess Demo](assets/screenshots/demo.gif)
 
 ## Screenshots
 
@@ -50,28 +79,10 @@ Once added, GitHub will render them here:
 - `android/`: Capacitor Android project
 - `assets/screenshots/`: README preview images
 
-## Run In Browser
-
-Because some Windows PowerShell setups block npm/npx scripts, use the command shim:
-
-```powershell
-npx.cmd --yes http-server . -p 5173
-```
-
-Then open:
-
-- http://127.0.0.1:5173
-
 ## Run Android (Capacitor)
 
 ```powershell
 npx.cmd cap run android
-```
-
-## Install Dependencies
-
-```powershell
-npm.cmd install
 ```
 
 ## Notes
