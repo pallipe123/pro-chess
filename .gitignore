@@ -1,0 +1,19 @@
+# Node
+node_modules/
+npm-debug.log*
+
+# Capacitor / Android build outputs
+android/.gradle/
+android/build/
+android/app/build/
+android/capacitor-cordova-android-plugins/build/
+
+# IDE / OS
+.vscode/
+.idea/
+*.iml
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pro Chess - Two Player</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <section id="homeScreen" class="screen">
+    <div class="entry-card">
+      <h1>Pro Chess</h1>
+      <p class="entry-text">Modern two-player chess with Three Check rule.</p>
+      <div class="entry-actions">
+        <button id="startNewGameBtn" type="button">Start New Game</button>
+        <button id="continueGameBtn" type="button">Continue Game</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="setupScreen" class="screen hidden">
+    <div class="entry-card setup-card">
+      <h1>Game Setup</h1>
+      <ul class="instructions-list">
+        <li>This is a two player chess game.</li>
+        <li>White and Black play alternately.</li>
+        <li>If a player gives check 3 times, they win the game.</li>
+        <li>Use Undo and Restart buttons if needed.</li>
+        <li>Protect your king from check and checkmate.</li>
+      </ul>
+
+      <fieldset class="start-options">
+        <legend>Who starts first?</legend>
+        <label><input type="radio" name="startingPlayer" value="white" checked /> White Starts</label>
+        <label><input type="radio" name="startingPlayer" value="black" /> Black Starts</label>
+      </fieldset>
+
+      <div class="entry-actions">
+        <button id="backHomeBtn" type="button">Back</button>
+        <button id="startGameBtn" type="button">Start Game</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="gameScreen" class="screen hidden">
+    <main class="app game-layout container">
+      <section class="board-section" aria-label="Chess board section">
+        <header class="board-header">
+          <h1>Pro Chess</h1>
+          <p class="subtitle">Two Player Local Match</p>
+        </header>
+
+        <div class="board-shell">
+          <div class="files-row files-top" aria-hidden="true">
+            <span class="coord-spacer"></span>
+            <div class="files">
+              <span>A</span><span>B</span><span>C</span><span>D</span><span>E</span><span>F</span><span>G</span><span>H</span>
+            </div>
+            <span class="coord-spacer"></span>
+          </div>
+
+          <div class="board-middle">
+            <div class="ranks ranks-left" aria-hidden="true">
+              <span>8</span><span>7</span><span>6</span><span>5</span><span>4</span><span>3</span><span>2</span><span>1</span>
+            </div>
+
+            <div id="board" class="board" role="grid" aria-label="Chess board"></div>
+
+            <div class="ranks ranks-right" aria-hidden="true">
+              <span>8</span><span>7</span><span>6</span><span>5</span><span>4</span><span>3</span><span>2</span><span>1</span>
+            </div>
+          </div>
+
+          <div class="files-row files-bottom" aria-hidden="true">
+            <span class="coord-spacer"></span>
+            <div class="files">
+              <span>A</span><span>B</span><span>C</span><span>D</span><span>E</span><span>F</span><span>G</span><span>H</span>
+            </div>
+            <span class="coord-spacer"></span>
+          </div>
+        </div>
+      </section>
+
+      <aside class="side-panel" aria-label="Game information panel">
+        <section class="panel-card">
+          <h2>Players</h2>
+          <div class="player-row">
+            <div>
+              <strong>White Player</strong>
+              <p id="whiteTimer" class="timer">10:00</p>
+              <p class="check-counter">Checks: <span id="whiteCheckCount">0</span>/3</p>
+            </div>
+            <span class="player-piece">♔</span>
+          </div>
+          <div class="player-row">
+            <div>
+              <strong>Black Player</strong>
+              <p id="blackTimer" class="timer">10:00</p>
+              <p class="check-counter">Checks: <span id="blackCheckCount">0</span>/3</p>
+            </div>
+            <span class="player-piece">♚</span>
+          </div>
+          <div class="timer-controls" aria-label="Timer controls">
+            <button id="pauseBtn" type="button">Pause Game</button>
+            <button id="resumeBtn" type="button">Resume Game</button>
+          </div>
+        </section>
+
+        <section class="panel-card">
+          <h2>Status</h2>
+          <p id="status" class="status">White Turn</p>
+          <p id="checkNotice" class="check-notice" aria-live="polite"></p>
+        </section>
+
+        <section class="panel-card">
+          <h2>Captured Pieces</h2>
+          <p class="capture-label">White Lost</p>
+          <div id="capturedWhite" class="capture-list"></div>
+          <p class="capture-label">Black Lost</p>
+          <div id="capturedBlack" class="capture-list"></div>
+        </section>
+
+        <section class="panel-card history-card">
+          <h2>Move History</h2>
+          <ol id="moveHistory" class="move-history"></ol>
+        </section>
+
+        <section class="panel-card controls" aria-label="Game controls">
+          <button id="undoBtn" type="button">Undo Move</button>
+          <button id="restartBtn" type="button">Restart Game</button>
+        </section>
+      </aside>
+    </main>
+  </section>
+
+  <div id="promotionModal" class="modal hidden" aria-hidden="true">
+    <div class="modal-content">
+      <h3>Pawn Promotion</h3>
+      <p>Select a piece:</p>
+      <div class="promotion-options">
+        <button type="button" data-piece="queen">Queen</button>
+        <button type="button" data-piece="rook">Rook</button>
+        <button type="button" data-piece="bishop">Bishop</button>
+        <button type="button" data-piece="knight">Knight</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="gameOverOverlay" class="modal hidden" aria-hidden="true">
+    <div class="modal-content">
+      <h3 id="gameOverTitle">Game Over</h3>
+      <p id="gameOverMessage">Winner announcement</p>
+      <button id="overlayRestartBtn" type="button">Play Again</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
