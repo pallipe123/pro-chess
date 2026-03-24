@@ -7,6 +7,21 @@
 
 A modern two-player chess web application with Three Check rule support, local gameplay, timers, move history, and captured pieces tracking.
 
+## GitHub About Text
+
+Pro Chess is a responsive two-player chess web app with Three Check rule support, move history, timers, captured pieces tracking, and smooth local gameplay.
+
+Suggested topics:
+
+- chess
+- chess-game
+- javascript
+- web-app
+- capacitor
+- android
+- responsive-ui
+- game-development
+
 ## Quick Start
 
 Install dependencies:
